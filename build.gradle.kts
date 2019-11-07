@@ -13,45 +13,45 @@ val properties = properties("bintray.properties")
 val bintrayUser: String = properties.getProperty("user")
 val bintrayKey: String = properties.getProperty("key")
 
-subprojects
-    .onEach { it.repositories { jcenter() } }
-    .forEachAfterEvaluate { subproject ->
-        subproject.group = group
-        subproject.version = version
+subprojects.onEach {
+    it.repositories { jcenter() }
 
-        subproject.apply(plugin = "com.jfrog.bintray")
-        subproject.apply(plugin = "org.gradle.maven-publish")
+    it.group = group
+    it.version = version
 
-        val sourcesJar = subproject.task<Jar>("sourcesJar") {
-            archiveClassifier.set("sources")
-            duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-            from(subproject.sourceSets["main"].allSource)
-        }
+    it.apply(plugin = "com.jfrog.bintray")
+    it.apply(plugin = "org.gradle.maven-publish")
+}.forEachAfterEvaluate { subproject ->
+    val sourcesJar = subproject.task<Jar>("sourcesJar") {
+        archiveClassifier.set("sources")
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+        from(subproject.sourceSets["main"].allSource)
+    }
 
-        subproject.configure<PublishingExtension> {
-            publications.create<MavenPublication>("maven") {
-                from(subproject.components["java"])
-                artifact(sourcesJar) { classifier = "sources" }
-            }
-        }
-
-        subproject.configure<BintrayExtension> {
-            user = bintrayUser
-            key = bintrayKey
-
-            pkg.apply {
-                repo = "maven"
-                name = subproject.name
-                setLicenses("Apache-2.0")
-                websiteUrl = "https://github.com/OlegKrikun/commonmark-java-ktx"
-                issueTrackerUrl = "https://github.com/OlegKrikun/commonmark-java-ktx/issues"
-                vcsUrl = "https://github.com/OlegKrikun/commonmark-java-ktx.git"
-                githubRepo = "https://github.com/OlegKrikun/commonmark-java-ktx"
-
-                setPublications("maven")
-            }
+    subproject.configure<PublishingExtension> {
+        publications.create<MavenPublication>("maven") {
+            from(subproject.components["java"])
+            artifact(sourcesJar) { classifier = "sources" }
         }
     }
+
+    subproject.configure<BintrayExtension> {
+        user = bintrayUser
+        key = bintrayKey
+
+        pkg.apply {
+            repo = "maven"
+            name = subproject.name
+            setLicenses("Apache-2.0")
+            websiteUrl = "https://github.com/OlegKrikun/commonmark-java-ktx"
+            issueTrackerUrl = "https://github.com/OlegKrikun/commonmark-java-ktx/issues"
+            vcsUrl = "https://github.com/OlegKrikun/commonmark-java-ktx.git"
+            githubRepo = "https://github.com/OlegKrikun/commonmark-java-ktx"
+
+            setPublications("maven")
+        }
+    }
+}
 
 val Project.sourceSets get() = the<JavaPluginConvention>().sourceSets
 
