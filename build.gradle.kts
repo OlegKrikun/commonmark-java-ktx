@@ -46,7 +46,6 @@ subprojects.onEach {
             websiteUrl = "https://github.com/OlegKrikun/commonmark-java-ktx"
             issueTrackerUrl = "https://github.com/OlegKrikun/commonmark-java-ktx/issues"
             vcsUrl = "https://github.com/OlegKrikun/commonmark-java-ktx.git"
-            githubRepo = "OlegKrikun/commonmark-java-ktx"
 
             setPublications("maven")
         }
