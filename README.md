@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    implementation("ru.krikun.commonmark:commonmark-ktx:0.0.0")
+    implementation("ru.krikun.commonmark:commonmark-ktx:0.1.0")
 }
 ```
 
