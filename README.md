@@ -57,7 +57,7 @@ val result = sequence.map { parser.parse(it) }.map { renderer.render(it }
 Dependency      | Version
 --------------- | :----:
 kotlin-jvm      | 1.3.61
-commonmark-java | 0.13.0
+commonmark-java | 0.13.1
 
 ## License
 
