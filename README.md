@@ -3,7 +3,7 @@
 Little library that provide kotlin extension functions for [commonmark-java](https://github.com/atlassian/commonmark-java)
 
 [![Download](https://api.bintray.com/packages/olegkrikun/maven/commonmark-ktx/images/download.svg)](https://bintray.com/olegkrikun/maven/commonmark-ktx/_latestVersion)
-[![Kotlin](https://img.shields.io/badge/Kotlin-1.3.61-orange.svg)](https://kotlinlang.org/)
+[![Kotlin](https://img.shields.io/badge/Kotlin-1.4.10-orange.svg)](https://kotlinlang.org/)
 [![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-green.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
 
 ## Get
@@ -56,8 +56,8 @@ val result = sequence.map { parser.parse(it) }.map { renderer.render(it }
 ### Dependencies
 Dependency      | Version
 --------------- | :----:
-kotlin-jvm      | 1.3.61
-commonmark-java | 0.13.1
+kotlin-jvm      | 1.4.10
+commonmark-java | 0.15.2
 
 ## License
 
