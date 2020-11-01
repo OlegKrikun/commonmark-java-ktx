@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    implementation("ru.krikun.commonmark:commonmark-ktx:0.1.1")
+    implementation("ru.krikun.commonmark:commonmark-ktx:0.1.2")
 }
 ```
 
@@ -50,7 +50,7 @@ val sequence = sequenceOf<File>(...)
 val parser = buildParser()
 val renderer = buildTextContentRenderer { stripNewlines(true)}
 
-val result = sequence.map { parser.parse(it) }.map { renderer.render(it }
+val result = sequence.map { parser.parse(it) }.map { renderer.render(it) }
 ```
 
 ### Dependencies
@@ -62,7 +62,7 @@ commonmark-java | 0.15.2
 ## License
 
 ```
-Copyright 2019 OlegKrikun
+Copyright 2020 OlegKrikun
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
